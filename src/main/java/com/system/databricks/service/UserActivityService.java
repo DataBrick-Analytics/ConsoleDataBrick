@@ -40,7 +40,7 @@ public class UserActivityService {
         if (!activityRepository.existsById(userActivityId.getIdActivity())) {
             throw new EntityNotFoundException("Atividade não encontrada.");
         }
-        if (!activityRepository.existsById(userActivityId.getFkEnterprise())) {
+        if (!userRepository.existsById(userActivityId.getFkEnterprise())) {
             throw new EntityNotFoundException("Empresa não encontrada.");
         }
 
