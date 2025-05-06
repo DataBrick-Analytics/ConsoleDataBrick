@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class UserActivityController {
+
     private  final  UserActivityService userActivityService;
 
     public UserActivityController(UserActivityService userActivityService) {
@@ -29,4 +30,5 @@ public class UserActivityController {
 
         }
     }
+
 }
