@@ -14,10 +14,10 @@ public class UserActivityId implements Serializable {
     @Column(name = "fk_empresa")
     private Integer fkEnterprise;
 
-    @Column(name = "id_usuario")
+    @Column(name = "fk_usuario")
     private Integer userId;
 
-    @Column(name = "id_acao")
+    @Column(name = "fk_acao")
     private Integer idActivity;
 
     public Integer getFkEnterprise() {

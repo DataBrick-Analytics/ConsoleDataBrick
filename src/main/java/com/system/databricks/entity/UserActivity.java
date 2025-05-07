@@ -19,7 +19,7 @@ public class UserActivity {
     @Embedded
     private UserActivityId userActivityId;
 
-    @Column(name = "dt_acao")
+    @Column(name = "data_da_acao")
     private Date dtActivity = new Date();
 
     public Integer getIdUserAction() {
