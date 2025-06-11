@@ -44,7 +44,8 @@ public class UserActivityService {
             throw new EntityNotFoundException("Empresa não encontrada.");
         }
 
-        userActivity.setDtActivity(new Date());
+        userActivity.setDtCreation(new Date());
+        userActivity.setDtEdition(new Date());
         userActivityRepository.save(userActivity);
     }
 }

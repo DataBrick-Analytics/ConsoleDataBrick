@@ -10,6 +10,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Embeddable
+
 public class UserActivityId implements Serializable {
     @Column(name = "fk_empresa")
     private Integer fkEnterprise;
@@ -19,6 +20,7 @@ public class UserActivityId implements Serializable {
 
     @Column(name = "fk_acao")
     private Integer idActivity;
+
 
     public Integer getFkEnterprise() {
         return fkEnterprise;

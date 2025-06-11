@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-@Entity(name = "acoes")
+@Entity(name = "acao")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Activity {

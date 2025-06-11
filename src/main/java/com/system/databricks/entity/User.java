@@ -6,7 +6,7 @@ import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-@Entity(name = "usuarios")
+@Entity(name = "usuario")
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {

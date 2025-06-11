@@ -8,7 +8,7 @@ import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "acoes_de_usuario")
+@Entity(name = "acao_de_usuario")
 public class UserActivity {
 
     @Id
@@ -19,8 +19,20 @@ public class UserActivity {
     @Embedded
     private UserActivityId userActivityId;
 
-    @Column(name = "data_da_acao")
-    private Date dtActivity = new Date();
+    @Column(name = "data_criacao")
+    private Date dtCreation = new Date();
+
+
+    @Column(name = "data_edicao")
+    private Date dtEdition = new Date();
+
+    public Date getDtCreation() {return dtCreation;}
+
+    public void setDtCreation(Date dtCreation) {this.dtCreation = dtCreation;}
+
+    public Date getDtEdition() {return dtEdition;}
+
+    public void setDtEdition(Date dtEdition) {this.dtEdition = dtEdition;}
 
     public Integer getIdUserAction() {
         return idUserAction;
@@ -38,11 +50,5 @@ public class UserActivity {
         this.userActivityId = userActivityId;
     }
 
-    public Date getDtActivity() {
-        return dtActivity;
-    }
 
-    public void setDtActivity(Date dtActivity) {
-        this.dtActivity = dtActivity;
-    }
 }
