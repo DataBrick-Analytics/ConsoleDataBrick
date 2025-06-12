@@ -1,6 +1,6 @@
 package com.system.databricks.controller;
 
-import com.system.databricks.entity.UserActivity;
+import com.system.databricks.entity.compoundKey.UserActivityId;
 import com.system.databricks.service.UserActivityService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -19,7 +19,7 @@ public class UserActivityController {
     }
 
     @PostMapping("/save-activity")
-    public ResponseEntity<String> saveActivity(@RequestBody UserActivity userActivity){
+    public ResponseEntity<String> saveActivity(@RequestBody UserActivityId userActivity){
         try {
             userActivityService.saveActivity(userActivity);
             return ResponseEntity.status(HttpStatus.CREATED).body("Atividade registrada com sucesso.");

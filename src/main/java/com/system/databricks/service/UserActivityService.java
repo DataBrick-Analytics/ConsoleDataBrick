@@ -3,6 +3,7 @@ package com.system.databricks.service;
 import com.system.databricks.entity.UserActivity;
 import com.system.databricks.entity.compoundKey.UserActivityId;
 import com.system.databricks.repository.ActivityRepository;
+import com.system.databricks.repository.EnterpriseRepository;
 import com.system.databricks.repository.UserActivityRepository;
 import com.system.databricks.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -18,21 +19,25 @@ public class UserActivityService {
     UserRepository userRepository;
 
     @Autowired
+    EnterpriseRepository enterpriseRepository;
+
+    @Autowired
     ActivityRepository activityRepository;
 
     @Autowired
     UserActivityRepository userActivityRepository;
 
-    public void saveActivity(UserActivity userActivity) {
-        UserActivityId userActivityId =userActivity.getUserActivityId();
+    public void saveActivity(UserActivityId userActivityId) {
+        UserActivity userActivity = new UserActivity();
+        userActivity.setUserActivityId(userActivityId);
 
-        if (userActivityId.getIdActivity() == null) {
+        if (userActivity.getUserActivityId().getIdActivity() == null) {
             throw new IllegalArgumentException("Id da atividade não pode ser nulo.");
         }
-        if (userActivityId.getFkEnterprise() == null) {
+        if (userActivity.getUserActivityId().getFkEnterprise() == null) {
             throw new IllegalArgumentException("Id da empresa não pode ser nulo.");
         }
-        if (userActivityId.getUserId() != null && !userRepository.existsById(userActivityId.getUserId())) {
+        if (userActivity.getUserActivityId().getUserId() != null && !userRepository.existsById(userActivity.getUserActivityId().getUserId())) {
             throw new EntityNotFoundException("Usuário não encontrado.");
         }
 
@@ -40,7 +45,7 @@ public class UserActivityService {
         if (!activityRepository.existsById(userActivityId.getIdActivity())) {
             throw new EntityNotFoundException("Atividade não encontrada.");
         }
-        if (!userRepository.existsById(userActivityId.getFkEnterprise())) {
+        if (!enterpriseRepository.existsById(userActivityId.getFkEnterprise())) {
             throw new EntityNotFoundException("Empresa não encontrada.");
         }
 
